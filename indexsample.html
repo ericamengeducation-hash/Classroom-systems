@@ -1,0 +1,672 @@
+<!doctype html>
+<!--
+  Ameng Education Management System (AEMS) · Portfolio edition
+  © 2026 Eric Ameng. All rights reserved.
+  Work sample. Student names and student writing are replaced with a fictional
+  roster and invented sample lines. No real student data appears in this file.
+  Classroom and workshop editions of AEMS hubs are licensed separately by the author.
+  Project ID: AEMS-26-K7R4-Q9VX
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ameng Classroom Systems</title>
+<meta name="description" content="Work sample — two connected Grade 5 classroom systems built and taught by Eric Ameng.">
+<meta name="author" content="Eric Ameng">
+<meta name="copyright" content="© 2026 Eric Ameng · Ameng Education Management System">
+<meta name="aems:project" content="AEMS-26-K7R4-Q9VX">
+<meta name="aems:edition" content="portfolio">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --paper:#F4F7F5; --surface:#FFFFFF; --surface-2:#EAF0EC; --sunk:#FAFCFB;
+  --ink:#15241E; --ink-2:#4E5D55; --ink-3:#7A877F;
+  --line:#D7DFD9; --line-2:#C3CDC6;
+  --brand:#0D6B71; --brand-2:#0F8187; --brand-ink:#FFFFFF; --brand-soft:#E2F1F1; --brand-line:#B6D8D9;
+  --grad:linear-gradient(135deg,#E6F3F3 0%,#F4FAFA 60%,#FFFFFF 100%);
+  --claim:#2C5C8D; --claim-soft:#E1EAF3; --claim-line:#B7CCE0;
+  --evid:#1A6E51; --evid-soft:#DCEDE4; --evid-line:#AFD5C3;
+  --mark:#F2BE2F; --mark-soft:#FBEDBC;
+  --warn:#A64227; --warn-soft:#F7E3DB;
+  --shadow:0 1px 0 rgba(21,36,30,.04), 0 10px 26px -18px rgba(21,36,30,.45);
+  --wm-op:.05;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  color-scheme:dark;
+  --paper:#0F1512; --surface:#18201B; --surface-2:#222B24; --sunk:#141B16;
+  --ink:#E9EEE7; --ink-2:#A6B2A6; --ink-3:#7E8B7E;
+  --line:#2E372F; --line-2:#3C473D;
+  --brand:#55B9BE; --brand-2:#79CFD3; --brand-ink:#06201F; --brand-soft:#163B3D; --brand-line:#2A5F62;
+  --grad:linear-gradient(135deg,#17393B 0%,#132B2C 60%,#18201B 100%);
+  --claim:#87B5E0; --claim-soft:#1B2A38; --claim-line:#2E4B64;
+  --evid:#6DCBA1; --evid-soft:#13291F; --evid-line:#255B42;
+  --mark:#F2BE2F; --mark-soft:#4A3A0C;
+  --warn:#E79A80; --warn-soft:#331C14;
+  --shadow:0 1px 0 rgba(0,0,0,.3), 0 12px 28px -20px rgba(0,0,0,.95);
+  --wm-op:.07;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0F1512; --surface:#18201B; --surface-2:#222B24; --sunk:#141B16;
+  --ink:#E9EEE7; --ink-2:#A6B2A6; --ink-3:#7E8B7E;
+  --line:#2E372F; --line-2:#3C473D;
+  --brand:#55B9BE; --brand-2:#79CFD3; --brand-ink:#06201F; --brand-soft:#163B3D; --brand-line:#2A5F62;
+  --grad:linear-gradient(135deg,#17393B 0%,#132B2C 60%,#18201B 100%);
+  --claim:#87B5E0; --claim-soft:#1B2A38; --claim-line:#2E4B64;
+  --evid:#6DCBA1; --evid-soft:#13291F; --evid-line:#255B42;
+  --mark:#F2BE2F; --mark-soft:#4A3A0C;
+  --warn:#E79A80; --warn-soft:#331C14;
+  --shadow:0 1px 0 rgba(0,0,0,.3), 0 12px 28px -20px rgba(0,0,0,.95);
+  --wm-op:.07;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
+  font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+h1,h2,h3,h4,.disp{font-family:"Bricolage Grotesque","Source Sans 3",system-ui,sans-serif; text-wrap:balance; margin:0}
+a{color:var(--brand)}
+.wrap{max-width:860px; margin:0 auto; padding-inline:20px}
+
+/* ---------- masthead ---------- */
+.mast{background:var(--surface); border-bottom:1px solid var(--line)}
+.mast .wrap{padding-block:26px 24px; display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap}
+.mark{width:52px; height:52px; flex:0 0 auto}
+.who{min-width:0; flex:1 1 320px}
+.who h1{font-size:clamp(26px,4.4vw,34px); letter-spacing:-.025em; line-height:1.05; font-weight:800}
+.who .brandline{
+  font-size:10.5px; letter-spacing:.15em; text-transform:uppercase; font-weight:700;
+  color:var(--brand); margin-top:5px;
+}
+.who .role{color:var(--ink-2); font-size:17px; margin-top:9px; max-width:52ch}
+.stamp{
+  flex:0 0 auto; align-self:flex-start; background:var(--grad); border:1px solid var(--brand-line);
+  border-radius:9px; padding:8px 13px; font-size:11px; letter-spacing:.09em; text-transform:uppercase;
+  font-weight:700; color:var(--brand);
+}
+
+/* ---------- sections ---------- */
+section{padding-block:40px}
+section + section{border-top:1px solid var(--line)}
+.eyebrow{font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--brand); margin-bottom:7px}
+h2.sh{font-size:clamp(22px,3.2vw,27px); letter-spacing:-.02em; font-weight:700; margin-bottom:10px}
+p{margin:0 0 15px}
+p.lede{font-size:18.5px; color:var(--ink-2); max-width:62ch}
+.max{max-width:66ch}
+
+/* ---------- flow diagram ---------- */
+.flow{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:22px 0 6px;
+}
+.fstep{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:13px 14px;
+  box-shadow:var(--shadow); position:relative;
+}
+.fstep.on{border-color:var(--brand-line); background:var(--grad)}
+.fstep .n{
+  font-size:10px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--ink-3);
+  display:block; margin-bottom:4px;
+}
+.fstep.on .n{color:var(--brand)}
+.fstep b{font-family:"Bricolage Grotesque",sans-serif; font-size:15.5px; display:block; line-height:1.25}
+.fstep span.d{display:block; font-size:13.5px; color:var(--ink-2); margin-top:4px}
+.flownote{font-size:14.5px; color:var(--ink-3); margin-top:14px}
+
+/* ---------- project block ---------- */
+.proj{margin-top:4px}
+.ptitle{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:4px}
+.ptitle h3{font-size:23px; letter-spacing:-.02em; font-weight:800}
+.ptitle .kind{
+  font-size:10.5px; letter-spacing:.11em; text-transform:uppercase; font-weight:700;
+  color:var(--brand); background:var(--brand-soft); border-radius:999px; padding:3px 10px;
+}
+.trio{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:14px; margin:18px 0 22px}
+.trio .t{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 16px; box-shadow:var(--shadow)}
+.trio h4{font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--brand); margin-bottom:6px}
+.trio p{font-size:15.5px; margin:0; color:var(--ink-2)}
+.trio p strong{color:var(--ink)}
+
+/* ---------- demo frame ---------- */
+.demo{border:1px solid var(--line-2); border-radius:14px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow)}
+.dhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  background:var(--grad); border-bottom:1px solid var(--brand-line); padding:9px 14px;
+}
+.dhead .dot{width:9px; height:9px; border-radius:50%; background:var(--brand); opacity:.45; flex:0 0 auto}
+.dhead .dname{font-family:"Bricolage Grotesque",sans-serif; font-weight:700; font-size:14px}
+.dhead .dtag{margin-left:auto; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--brand)}
+.dbody{padding:18px}
+.tabs{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px}
+.tabs button{
+  font:inherit; font-size:14px; font-weight:600; cursor:pointer; color:var(--ink-2);
+  background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:6px 13px;
+}
+.tabs button[aria-selected="true"]{background:var(--brand); border-color:var(--brand); color:var(--brand-ink)}
+.pane[hidden]{display:none}
+
+/* START HERE bar — light gradient, no solid fill */
+.start{
+  display:flex; gap:12px; align-items:flex-start; background:var(--grad);
+  border:1px solid var(--brand-line); border-left:4px solid var(--brand);
+  border-radius:9px; padding:12px 15px; margin:0 0 18px;
+}
+.start .tag{
+  flex:0 0 auto; font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:10.5px;
+  letter-spacing:.12em; background:var(--mark); color:#15241E; padding:3px 8px; border-radius:4px; margin-top:2px;
+}
+.start p{margin:0; font-size:15.5px; line-height:1.45}
+
+.pill{display:inline-block; font-size:10px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; padding:2px 8px; border-radius:999px}
+.pill.c{background:var(--claim-soft); color:var(--claim)}
+.pill.e{background:var(--evid-soft); color:var(--evid)}
+.hl{background:linear-gradient(transparent 58%, var(--mark-soft) 58%); padding:0 1px}
+
+.ree{display:grid; gap:9px; margin:0 0 16px}
+.ree .step{display:grid; grid-template-columns:38px minmax(0,1fr); gap:12px; align-items:start;
+  background:var(--sunk); border:1px solid var(--line); border-radius:11px; padding:12px 14px}
+.ree .n{font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:23px; line-height:1; color:var(--brand); opacity:.8}
+.ree h5{margin:0 0 3px; font-size:15px; font-family:"Bricolage Grotesque",sans-serif}
+.ree p{margin:0; font-size:14.5px; color:var(--ink-2)}
+
+.exbox{border:1px solid var(--evid-line); border-radius:11px; overflow:hidden; margin:0 0 14px}
+.exbox .eh{background:var(--evid-soft); color:var(--evid); padding:7px 13px; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:700}
+.exbox .eb{padding:13px 15px; font-size:15.5px}
+.exbox .eb p{margin:0 0 9px} .exbox .eb p:last-child{margin:0}
+.exbox.bad{border-color:#E6C3B5}
+.exbox.bad .eh{background:var(--warn-soft); color:var(--warn)}
+
+.tw{overflow-x:auto; border:1px solid var(--line); border-radius:11px; margin:0 0 14px}
+table{border-collapse:collapse; width:100%; font-size:15px}
+th,td{text-align:left; padding:9px 13px; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); background:var(--surface-2)}
+tbody tr:last-child td{border-bottom:0}
+td.from{color:var(--warn)} td.to{color:var(--evid); font-weight:600}
+
+.checklist{display:grid; gap:0}
+.checklist label{display:flex; gap:11px; align-items:flex-start; padding:9px 0; font-size:15.5px; border-top:1px solid var(--line); cursor:pointer}
+.checklist label:first-child{border-top:0}
+.checklist input{margin:3px 0 0; width:18px; height:18px; accent-color:var(--evid); flex:0 0 auto; cursor:pointer}
+.checklist input:checked + span{color:var(--ink-3); text-decoration:line-through; text-decoration-color:var(--line-2)}
+
+/* ---------- vote demo ---------- */
+.vstep{font-size:14px; color:var(--ink-3); margin:0 0 10px}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:16px}
+.chip{
+  font:inherit; font-size:14.5px; font-weight:600; cursor:pointer; color:var(--ink);
+  background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:6px 13px;
+}
+.chip[aria-pressed="true"]{background:var(--brand); border-color:var(--brand); color:var(--brand-ink)}
+.chip.done{color:var(--ink-3); background:var(--sunk); border-style:dashed; cursor:default}
+.papers{display:grid; gap:9px; margin-bottom:14px}
+.paper{
+  font:inherit; text-align:left; cursor:pointer; color:var(--ink); background:var(--surface);
+  border:1px solid var(--line); border-radius:11px; padding:12px 14px; display:grid; gap:3px;
+}
+.paper:enabled:hover{border-color:var(--brand); background:var(--sunk)}
+.paper:disabled{opacity:.5; cursor:not-allowed}
+.paper .pk{font-family:"Bricolage Grotesque",sans-serif; font-weight:700; font-size:16px}
+.paper .pq{font-size:14.5px; color:var(--ink-2); font-style:italic}
+.said{font-size:14.5px; color:var(--evid); font-weight:600; min-height:21px; margin:0 0 12px}
+.results{display:grid; gap:10px; margin-bottom:14px}
+.bar{display:grid; grid-template-columns:86px minmax(0,1fr) 44px; gap:10px; align-items:center; font-size:14.5px}
+.bar .track{height:20px; background:var(--surface-2); border-radius:999px; overflow:hidden}
+.bar .fill{height:100%; background:linear-gradient(90deg,var(--brand),var(--brand-2)); border-radius:999px; transition:width .35s ease}
+.bar .cnt{text-align:right; font-variant-numeric:tabular-nums; color:var(--ink-2)}
+.acts{display:flex; gap:9px; flex-wrap:wrap}
+.btn{
+  font:inherit; font-size:14.5px; font-weight:600; cursor:pointer; border-radius:9px; padding:8px 14px;
+  background:var(--surface); border:1px solid var(--line); color:var(--ink-2);
+}
+.btn:hover{border-color:var(--line-2); color:var(--ink)}
+.btn.primary{background:var(--brand); border-color:var(--brand); color:var(--brand-ink)}
+.btn:disabled{opacity:.45; cursor:not-allowed}
+
+/* group feedback */
+.gcard{background:var(--sunk); border:1px solid var(--line); border-radius:12px; padding:15px 16px}
+.gcard .gf{font-size:15.5px; margin:0 0 12px; color:var(--ink-2)}
+.gcard .gf b{color:var(--ink)}
+.gsteps{margin:0 0 14px; padding-left:20px}
+.gsteps li{font-size:15px; margin-bottom:6px}
+.kids{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:10px}
+.kid{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:11px 13px}
+.kid .kn{font-family:"Bricolage Grotesque",sans-serif; font-weight:700; font-size:15px}
+.kid .ks{font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; font-weight:700; color:var(--brand); margin:2px 0 6px}
+.kid .kq{font-size:14.5px; color:var(--ink-2); font-style:italic}
+
+/* ---------- capability list ---------- */
+.caps{display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:14px; margin-top:20px}
+.cap{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:15px 17px; box-shadow:var(--shadow)}
+.cap h4{font-size:16px; margin-bottom:5px; font-family:"Bricolage Grotesque",sans-serif}
+.cap p{font-size:15px; color:var(--ink-2); margin:0}
+
+.note{border-left:3px solid var(--brand); background:var(--grad); padding:13px 16px; border-radius:0 11px 11px 0; font-size:15.5px; margin:20px 0 0}
+.note b{font-family:"Bricolage Grotesque",sans-serif}
+
+/* ---------- footer ---------- */
+.foot{background:var(--surface); border-top:1px solid var(--line)}
+.foot .wrap{padding-block:20px; display:flex; flex-wrap:wrap; gap:8px 18px; justify-content:space-between; align-items:center}
+.aems-notice{font-size:12px; color:var(--ink-3)}
+.foot .bl{font-size:10px; letter-spacing:.13em; text-transform:uppercase; font-weight:700; color:var(--brand)}
+.watermark{position:fixed; right:-44px; bottom:-54px; width:min(280px,50vw); z-index:-1; pointer-events:none; opacity:var(--wm-op); color:var(--brand)}
+
+:focus-visible{outline:3px solid var(--mark); outline-offset:2px; border-radius:4px}
+@media (max-width:620px){
+  body{font-size:16.5px}
+  .mast .wrap{padding-block:20px}
+  .stamp{display:none}
+  .bar{grid-template-columns:72px minmax(0,1fr) 38px}
+}
+@media print{
+  .watermark,.acts,.tabs{display:none !important}
+  body{background:#fff; font-size:10.5pt}
+  .demo,.cap,.trio .t,.fstep{box-shadow:none; break-inside:avoid}
+  section{break-inside:avoid; padding-block:18px}
+  .pane[hidden]{display:block !important}
+  @page{margin:14mm}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <svg class="mark" viewBox="0 0 48 48" role="img" aria-label="Ameng Education Management System">
+      <rect x="1" y="1" width="46" height="46" rx="12" fill="var(--brand)"/>
+      <text x="24" y="25" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="19" letter-spacing="-.5" fill="var(--brand-ink)">EA</text>
+      <path d="M8 32.4c3.4-2.8 6.8-2.8 10.2 0s6.8 2.8 10.2 0 6.8-2.8 10.2 0" fill="none" stroke="var(--brand-ink)" stroke-width="2" stroke-linecap="round" opacity=".9"/>
+      <path d="M8 37.4c3.4-2.8 6.8-2.8 10.2 0s6.8 2.8 10.2 0 6.8-2.8 10.2 0" fill="none" stroke="var(--brand-ink)" stroke-width="1.5" stroke-linecap="round" opacity=".55"/>
+      <path d="M8 42c3.4-2.8 6.8-2.8 10.2 0s6.8 2.8 10.2 0 6.8-2.8 10.2 0" fill="none" stroke="var(--brand-ink)" stroke-width="1.1" stroke-linecap="round" opacity=".3"/>
+    </svg>
+    <div class="who">
+      <h1>Eric Ameng</h1>
+      <div class="brandline">Ameng Education Management System</div>
+      <p class="role">I design and build the tools my Grade 5 classroom runs on &mdash; instruction, assessment and feedback, as one connected system. This page is a working sample of two of them.</p>
+    </div>
+    <div class="stamp">Work sample &middot; 2026</div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ THE SYSTEM ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The system</div>
+    <h2 class="sh">One unit, five moves, two tools I built</h2>
+    <p class="lede">Students study a historical mystery, pick a theory, and have to convince the room. The two tools below sit at opposite ends of that arc: one teaches the skill, the other turns the whole class into the audience that judges it &mdash; and then sorts them into the exact revision group each writer needs.</p>
+
+    <div class="flow">
+      <div class="fstep on"><span class="n">Move 1</span><b>Teach the skill</b><span class="d">Claim, evidence, counterargument &mdash; on demand, not as a lecture.</span></div>
+      <div class="fstep"><span class="n">Move 2</span><b>Build the case</b><span class="d">Each student argues one theory from real evidence.</span></div>
+      <div class="fstep on"><span class="n">Move 3</span><b>Blind class vote</b><span class="d">Papers read with no names. The room votes on the argument alone.</span></div>
+      <div class="fstep on"><span class="n">Move 4</span><b>Named feedback groups</b><span class="d">Six groups, each with one fix and a line of their own writing that works.</span></div>
+      <div class="fstep"><span class="n">Move 5</span><b>Revise</b><span class="d">Back to the skill pages for the one thing their group is fixing.</span></div>
+    </div>
+    <p class="flownote">Shaded moves are the two tools demonstrated on this page. Everything is built as a single self-contained HTML file &mdash; no logins, no student accounts, runs on a classroom projector, a Chromebook or a phone.</p>
+  </div>
+</section>
+
+<!-- ============ TOOL 1 ============ -->
+<section>
+  <div class="wrap proj">
+    <div class="eyebrow">Tool 1 &middot; Move 1 and Move 5</div>
+    <div class="ptitle">
+      <h3>The Convincing Desk</h3>
+      <span class="kind">Student reference hub</span>
+    </div>
+    <p class="max">A sixteen-page reference students open while they write. Each page covers one move and opens with a single instruction, so a stuck writer gets one thing to do rather than a wall of advice.</p>
+
+    <div class="trio">
+      <div class="t"><h4>The problem</h4><p>Mini-lessons land on Monday. The writing happens Thursday. By then the anchor chart is gone and the help is generic.</p></div>
+      <div class="t"><h4>What I built</h4><p>One page per move, mapped <strong>exactly</strong> onto the boxes of the paper organizer, so "go to your supporting detail box" and "go to that page" are the same instruction.</p></div>
+      <div class="t"><h4>What it changed</h4><p>Feedback got shorter. Instead of re-teaching, I name a page. The writer owns the fix.</p></div>
+    </div>
+
+    <div class="demo">
+      <div class="dhead"><span class="dot"></span><span class="dname">The Convincing Desk</span><span class="dtag">3 of 16 pages &middot; live</span></div>
+      <div class="dbody">
+        <div class="tabs" role="tablist" aria-label="Sample pages">
+          <button type="button" role="tab" aria-selected="true" data-pane="d1">Your stance</button>
+          <button type="button" role="tab" aria-selected="false" data-pane="d2">Supporting details</button>
+          <button type="button" role="tab" aria-selected="false" data-pane="d3">Self-check</button>
+        </div>
+
+        <div class="pane" id="d1" role="tabpanel">
+          <div class="start"><span class="tag">START HERE</span><p>Finish this out loud, in one breath: <b>&ldquo;I believe ______ because ______.&rdquo;</b> If you cannot do it in one breath, your stance is still too fuzzy.</p></div>
+          <div class="tw"><table>
+            <thead><tr><th>Squishy</th><th>Solid</th></tr></thead>
+            <tbody>
+              <tr><td class="from">I kind of think maybe they went somewhere else.</td><td class="to">The colonists moved to Hatteras Island and joined the community already living there.</td></tr>
+              <tr><td class="from">There are a lot of theories.</td><td class="to">The strongest theory is assimilation, and the digs are why.</td></tr>
+            </tbody>
+          </table></div>
+          <p style="font-size:15.5px;margin:0"><b>Test it:</b> could a classmate disagree with your sentence? If nobody could possibly argue with it, it is a fact, not a stance.</p>
+        </div>
+
+        <div class="pane" id="d2" role="tabpanel" hidden>
+          <div class="start"><span class="tag">START HERE</span><p>Go to Supporting Detail #1 on your organizer. Bullet one is a <b>reason</b>, not a fact. Write the reason first. The evidence comes after.</p></div>
+          <div class="ree">
+            <div class="step"><div class="n">1</div><div><h5>Reason <span class="pill c">why you think it</span></h5><p>One sentence in your own words.</p></div></div>
+            <div class="step"><div class="n">2</div><div><h5>Evidence <span class="pill e">proof anyone can check</span></h5><p>A fact, number, date or object. Name where it came from.</p></div></div>
+            <div class="step"><div class="n">3</div><div><h5>Explain <span class="pill c">so what?</span></h5><p>Say what it proves. Never leave evidence sitting alone.</p></div></div>
+          </div>
+          <div class="exbox"><div class="eh">Filled in</div><div class="eb">
+            <p><span class="pill c">reason</span> English tools were being used inside the village for years afterward.</p>
+            <p><span class="pill e">evidence</span> Archaeologists found hammerscale &mdash; the flakes that fall when iron is worked at a forge &mdash; in layers that built up over decades.</p>
+            <p><span class="pill c">explain</span> Hammerscale does not travel. It falls where the work happens.</p>
+          </div></div>
+          <div class="exbox bad"><div class="eh">Evidence left alone &mdash; don&rsquo;t</div><div class="eb"><p>&ldquo;Archaeologists found hammerscale. My next reason is&hellip;&rdquo;</p></div></div>
+        </div>
+
+        <div class="pane" id="d3" role="tabpanel" hidden>
+          <div class="start"><span class="tag">START HERE</span><p>Read your whole paper <b>out loud</b> first, without stopping to fix anything. Your ear catches what your eye skips. Then start ticking.</p></div>
+          <div class="checklist">
+            <label><input type="checkbox"><span>My stance is one clear sentence with no maybe in it.</span></label>
+            <label><input type="checkbox"><span>Each supporting detail has a reason, evidence, and an explanation.</span></label>
+            <label><input type="checkbox"><span>No piece of evidence is left sitting alone without me explaining it.</span></label>
+            <label><input type="checkbox"><span>I answered the other side <span class="hl">fairly</span> &mdash; their best argument, not their silliest.</span></label>
+            <label><input type="checkbox"><span>I wrote <em>suggests</em> where I cannot honestly write <em>proves</em>.</span></label>
+            <label><input type="checkbox"><span>Every quote has quotation marks and a name attached.</span></label>
+          </div>
+          <p style="font-size:14.5px;color:var(--ink-3);margin:14px 0 0">In the classroom version every unticked box links to the page that fixes it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOL 2 ============ -->
+<section>
+  <div class="wrap proj">
+    <div class="eyebrow">Tool 2 &middot; Move 3 and Move 4</div>
+    <div class="ptitle">
+      <h3>The Conference Hub</h3>
+      <span class="kind">Projected class event</span>
+    </div>
+    <p class="max">One screen that runs a whole writing conference: three papers read aloud with the authors hidden, a blind class vote on which argument is most convincing, then six named feedback groups &mdash; each with one fix to make and one line of that student's own writing held up as the thing that already works.</p>
+
+    <div class="trio">
+      <div class="t"><h4>The problem</h4><p>Peer feedback is usually either "I liked it" or a popularity contest. And twenty writers need twenty different fixes.</p></div>
+      <div class="t"><h4>What I built</h4><p>Names hidden until after the vote, so the room judges the <strong>argument</strong>. Then every student lands in a group named for the one move they are working on.</p></div>
+      <div class="t"><h4>The design rule</h4><p>Nobody gets a next step without first being shown a sentence of their own that works. Growth framing is structural, not a tone I remember to use.</p></div>
+    </div>
+
+    <div class="demo">
+      <div class="dhead"><span class="dot"></span><span class="dname">Conference Hub</span><span class="dtag">Fictional roster &middot; live</span></div>
+      <div class="dbody">
+        <div class="tabs" role="tablist" aria-label="Conference stages">
+          <button type="button" role="tab" aria-selected="true" data-pane="c1">The blind vote</button>
+          <button type="button" role="tab" aria-selected="false" data-pane="c2">Feedback groups</button>
+        </div>
+
+        <div class="pane" id="c1" role="tabpanel">
+          <div class="start"><span class="tag">START HERE</span><p>Three papers have just been read aloud. No names. <b>Tap your name, then tap the paper whose argument convinced you.</b></p></div>
+          <p class="vstep">1. Tap your name &nbsp;&middot;&nbsp; 2. Tap a paper. Nobody sees your choice.</p>
+          <div class="chips" id="voterChips"></div>
+          <p class="said" id="voteSaid"></p>
+          <div class="papers" id="paperBtns"></div>
+          <div class="results" id="voteResults" hidden></div>
+          <div class="acts">
+            <button class="btn primary" type="button" id="btnShow">Show the results</button>
+            <button class="btn" type="button" id="btnReveal" disabled>Reveal the authors</button>
+            <button class="btn" type="button" id="btnReset">Reset</button>
+          </div>
+        </div>
+
+        <div class="pane" id="c2" role="tabpanel" hidden>
+          <div class="start"><span class="tag">START HERE</span><p>Find your name. Your group has <b>one</b> fix today. Do step one before you do anything else.</p></div>
+          <div class="tabs" id="groupTabs" role="tablist" aria-label="Feedback groups"></div>
+          <div class="gcard" id="groupCard"></div>
+          <p style="font-size:14.5px;color:var(--ink-3);margin:14px 0 0">Three of six groups shown. Group membership comes from reading the drafts, not from ability bands &mdash; a strong writer with a weak conclusion sits in Openers &amp; Closers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT IT SHOWS ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">What this sample shows</div>
+    <h2 class="sh">Why I build these myself</h2>
+    <div class="caps">
+      <div class="cap"><h4>Instructional design</h4><p>Reference material structured the way a stuck ten-year-old actually enters it: one page, one move, one first instruction.</p></div>
+      <div class="cap"><h4>Assessment design</h4><p>A blind vote separates the quality of an argument from the popularity of its author, and gives the class a reason to listen closely.</p></div>
+      <div class="cap"><h4>Differentiation that scales</h4><p>Six groups, each named for a skill, built from what the drafts actually showed. Every student gets a specific next step the same afternoon.</p></div>
+      <div class="cap"><h4>I ship the tools</h4><p>Self-contained HTML, no logins or student accounts, works offline on whatever device is in the room, prints cleanly for families.</p></div>
+      <div class="cap"><h4>Student data discipline</h4><p>Live tools hold real names and never leave the class. Everything I share publicly &mdash; including this page &mdash; carries a fictional roster and invented sample writing.</p></div>
+      <div class="cap"><h4>A system, not one-offs</h4><p>Shared branding, shared print rules, a documented build and provenance protocol, so the next tool is consistent with the last one.</p></div>
+    </div>
+    <div class="note"><b>About this page.</b> Both tools are real and in daily classroom use. What you see here is a reduced demonstration build: student names are fictional, the sample sentences are invented, and the shared database that normally collects live votes has been replaced with in-page state so this file runs anywhere.</div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span class="aems-notice">&copy; 2026 Eric Ameng &middot; Ameng Education Management System &middot; All rights reserved. Portfolio sample &mdash; fictional roster, no real student data.</span>
+    <span class="bl">AEMS</span>
+  </div>
+</footer>
+
+<svg class="watermark" viewBox="0 0 48 48" aria-hidden="true">
+  <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="none" stroke="currentColor" stroke-width="1.2"/>
+  <text x="24" y="25" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="19" fill="currentColor">EA</text>
+  <path d="M8 32.4c3.4-2.8 6.8-2.8 10.2 0s6.8 2.8 10.2 0 6.8-2.8 10.2 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M8 37.4c3.4-2.8 6.8-2.8 10.2 0s6.8 2.8 10.2 0 6.8-2.8 10.2 0" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+</svg>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- tab panes (both demos) ---------- */
+  document.querySelectorAll('[data-pane]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var group = btn.parentNode;
+      group.querySelectorAll('[data-pane]').forEach(function(b){
+        var on = (b === btn);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        var pane = document.getElementById(b.getAttribute('data-pane'));
+        if(pane){ pane.hidden = !on; }
+      });
+    });
+  });
+
+  /* ---------- blind vote (fictional roster) ---------- */
+  var VOTERS = ['Ava','Mateo','Priya','Jonah','Nalani','Kai','Lila','Theo'];
+  var PAPERS = [
+    {k:'A', title:'No One Walked Away', author:'Nalani', q:'Imagine standing on an empty island, reading one word carved into a post.'},
+    {k:'B', title:'They Were Never Lost', author:'Theo',  q:'The colony was never lost. We were just counting the wrong people.'},
+    {k:'C', title:'The Sea Took Them',   author:'Priya',  q:'What happens to a small boat when the storm arrives before the supplies do?'}
+  ];
+  var votes = {}, picked = null, reveal = false, showResults = false;
+
+  var chipWrap = document.getElementById('voterChips');
+  var paperWrap = document.getElementById('paperBtns');
+  var said = document.getElementById('voteSaid');
+  var resWrap = document.getElementById('voteResults');
+  var btnShow = document.getElementById('btnShow');
+  var btnReveal = document.getElementById('btnReveal');
+  var btnReset = document.getElementById('btnReset');
+
+  function el(tag, cls, text){
+    var e = document.createElement(tag);
+    if(cls){ e.className = cls; }
+    if(text != null){ e.textContent = text; }
+    return e;
+  }
+
+  function renderVote(){
+    chipWrap.textContent = '';
+    VOTERS.forEach(function(name){
+      var voted = !!votes[name];
+      var b = el('button', 'chip' + (voted ? ' done' : ''), name + (voted ? ' ✓' : ''));
+      b.type = 'button';
+      b.disabled = voted;
+      b.setAttribute('aria-pressed', picked === name ? 'true' : 'false');
+      b.addEventListener('click', function(){
+        picked = (picked === name ? null : name);
+        said.textContent = '';
+        renderVote();
+      });
+      chipWrap.appendChild(b);
+    });
+
+    paperWrap.textContent = '';
+    PAPERS.forEach(function(p){
+      var b = el('button', 'paper');
+      b.type = 'button';
+      b.disabled = !picked;
+      b.appendChild(el('span', 'pk', reveal ? p.title + ' — by ' + p.author : 'Paper ' + p.k));
+      b.appendChild(el('span', 'pq', reveal ? '“' + p.q + '”' : 'Begins: “' + p.q + '”'));
+      b.addEventListener('click', function(){
+        if(!picked){ return; }
+        votes[picked] = p.k;
+        said.textContent = 'Thanks, ' + picked + '! Your vote is in.';
+        picked = null;
+        renderVote();
+        if(showResults){ renderResults(); }
+      });
+      paperWrap.appendChild(b);
+    });
+
+    var cast = Object.keys(votes).length;
+    btnShow.disabled = cast === 0;
+    btnReveal.disabled = !showResults;
+    btnShow.textContent = showResults ? 'Results showing (' + cast + ' of ' + VOTERS.length + ')' : 'Show the results';
+  }
+
+  function renderResults(){
+    var tally = {A:0, B:0, C:0}, total = 0;
+    Object.keys(votes).forEach(function(n){ tally[votes[n]]++; total++; });
+    resWrap.textContent = '';
+    PAPERS.forEach(function(p){
+      var row = el('div', 'bar');
+      row.appendChild(el('span', null, reveal ? p.author : 'Paper ' + p.k));
+      var track = el('div', 'track');
+      var fill = el('div', 'fill');
+      fill.style.width = (total ? Math.round(tally[p.k] / total * 100) : 0) + '%';
+      track.appendChild(fill);
+      row.appendChild(track);
+      row.appendChild(el('span', 'cnt', String(tally[p.k])));
+      resWrap.appendChild(row);
+    });
+    resWrap.hidden = false;
+  }
+
+  btnShow.addEventListener('click', function(){
+    showResults = true;
+    renderResults();
+    renderVote();
+  });
+  btnReveal.addEventListener('click', function(){
+    reveal = true;
+    renderResults();
+    renderVote();
+    btnReveal.disabled = true;
+    btnReveal.textContent = 'Authors revealed';
+  });
+  btnReset.addEventListener('click', function(){
+    votes = {}; picked = null; reveal = false; showResults = false;
+    resWrap.hidden = true;
+    said.textContent = '';
+    btnReveal.textContent = 'Reveal the authors';
+    renderVote();
+  });
+
+  /* ---------- feedback groups ---------- */
+  var GROUPS = [
+    {
+      id:'g1', name:'Evidence Detectives',
+      focus:'Strong evidence comes from our sources and points straight at your theory.',
+      steps:[
+        'Find one piece of evidence that is not from our text, or that does not fit your theory.',
+        'Swap it for a fact that does. Use the Evidence Lab cards.',
+        'Add one sentence telling how the new fact supports your theory.'
+      ],
+      kids:[
+        {n:'Mateo', s:'Answering the other side', q:'It is true that there was a drought, but the colonists had already planned to move.'},
+        {n:'Ava',   s:'Using numbers',            q:'That is one thousand and ninety-five days before anyone came back.'},
+        {n:'Lila',  s:'Careful evidence',         q:'Even before the ship sailed, they were talking about going inland.'}
+      ]
+    },
+    {
+      id:'g2', name:'The Explainers',
+      focus:'A fact alone does not persuade. Tell your reader what it proves.',
+      steps:[
+        'Find the fact in each body paragraph.',
+        'Right after it, add a sentence that starts “This shows…” or “This proves…”',
+        'Read the paragraph aloud. Does the fact now connect to your theory?'
+      ],
+      kids:[
+        {n:'Jonah', s:'Specific evidence',  q:'Scientists read the rings inside the trees to find the dry years.'},
+        {n:'Kai',   s:'Powerful question',  q:'With all of these dangers, how could anyone have survived the winter?'},
+        {n:'Theo',  s:'Exact details',      q:'The armor was rusted through, and rust like that does not happen overnight.'}
+      ]
+    },
+    {
+      id:'g3', name:'Openers & Closers',
+      focus:'Your introduction names your theory. Your conclusion names your strongest evidence and why it matters.',
+      steps:[
+        'Add one sentence to your introduction that begins “I believe…” and names your theory.',
+        'Rewrite your conclusion: your theory, your strongest evidence, and a “so what”.',
+        'Trade with a partner. Can they find your stance in ten seconds?'
+      ],
+      kids:[
+        {n:'Nalani', s:'Clear stance',          q:'The evidence points to only one answer, and it is not the one in the story we were told.'},
+        {n:'Priya',  s:'Putting the reader there', q:'You feel the boat tip, and then, in a flash, you are under the water.'}
+      ]
+    }
+  ];
+  var gTabs = document.getElementById('groupTabs');
+  var gCard = document.getElementById('groupCard');
+  var gActive = GROUPS[0].id;
+
+  function renderGroups(){
+    gTabs.textContent = '';
+    GROUPS.forEach(function(g){
+      var b = el('button', null, g.name);
+      b.type = 'button';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', g.id === gActive ? 'true' : 'false');
+      b.addEventListener('click', function(){ gActive = g.id; renderGroups(); });
+      gTabs.appendChild(b);
+    });
+
+    var g = GROUPS.filter(function(x){ return x.id === gActive; })[0];
+    gCard.textContent = '';
+    var f = el('p', 'gf');
+    f.appendChild(el('b', null, 'Today’s focus: '));
+    f.appendChild(document.createTextNode(g.focus));
+    gCard.appendChild(f);
+
+    var ol = el('ol', 'gsteps');
+    g.steps.forEach(function(s){ ol.appendChild(el('li', null, s)); });
+    gCard.appendChild(ol);
+
+    var kids = el('div', 'kids');
+    g.kids.forEach(function(k){
+      var c = el('div', 'kid');
+      c.appendChild(el('div', 'kn', k.n));
+      c.appendChild(el('div', 'ks', 'Already working: ' + k.s));
+      c.appendChild(el('div', 'kq', '“' + k.q + '”'));
+      kids.appendChild(c);
+    });
+    gCard.appendChild(kids);
+  }
+
+  renderVote();
+  renderGroups();
+})();
+</script>
+</body>
+</html>
